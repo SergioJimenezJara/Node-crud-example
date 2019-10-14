@@ -1,0 +1,30 @@
+extends layout
+
+block content
+
+      h1(style="margin-top: 50px") #{mensaje} 
+
+      if(tareas && tareas.length > 0)
+        table.table
+            thead.thead-dark
+                tr
+                  th Nombre
+                  th Descripcion    
+                  th Estado
+            tbody
+                each tarea in tareas
+                    tr
+                        td=tarea.title
+                        td=tarea.description
+                        td=tarea.status
+                        td(style="border:0") 
+                             form(method='POST' action='/delete')
+                                input#id(type='hidden', name='id', value=tarea._id)
+                                button.btn.btn-danger(type='submit') Borrar
+        
+      hr
+      .row
+      .container
+          footer.footer
+            .container
+              p.text-muted Imagina Formación | 2016
