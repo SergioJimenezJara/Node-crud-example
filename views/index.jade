@@ -1,7 +1,17 @@
-extends layout
+extends layout 
 
-block content
-  h1= title
-  p Welcome to patatas #{title}
+block content 
 
-  
+  if (!user) 
+    h2 Welcome to #{title}
+  if (user) 
+    h2 |Welcome to #{title} &nbsp; small #{user.username}
+    hr 
+  div.jumbotron 
+    if (!user) 
+      a(href="/login") Login 
+      br 
+      a(href="/register") Register 
+    if (user) 
+      p You are currently logged in as #{user.username} 
+      a(href="/logout") Logout 

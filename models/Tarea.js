@@ -1,5 +1,5 @@
 var mongoose = require('mongoose'),
-Schema = mongoose.Schema; mongoose.connect('mongodb://localhost/test');
+Schema = mongoose.Schema;
 /**
 * Getters
 */
@@ -17,7 +17,8 @@ var TareaSchema = new Schema({
     description: {type : String, default : '', trim : true},
     status:{type: String, enum: ['todo', 'doing', 'review','done']},
     tags: {type: [], get: getTags, set: setTags},
-    createdAt : {type : Date, default : Date.now}
+    createdAt : {type : Date, default : Date.now},
+    createdBy: String
 });
 
 module.exports = mongoose.model('Tarea', TareaSchema);

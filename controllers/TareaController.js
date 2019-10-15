@@ -42,8 +42,11 @@ exports.newTarea = (req, res) => {
     var tarea = new Tarea({
         title: req.body['title'],
         description: req.body['description'],
-        status: req.body['status']
+        status: req.body['status'],
+        createdBy: req.user.username
     });
+
+    console.log(req.user);
 
     tarea.save(function (err, tarea) {
         if (!err) {

@@ -11,12 +11,14 @@ block content
                   th Nombre
                   th Descripcion    
                   th Estado
+                  th Usuario
             tbody
                 each tarea in tareas
                     tr
                         td=tarea.title
                         td=tarea.description
                         td=tarea.status
+                        td=tarea.createdBy
                         td(style="border:0") 
                              form(method='POST' action='/delete')
                                 input#id(type='hidden', name='id', value=tarea._id)
